@@ -1,22 +1,35 @@
-import logo from './logo.svg';
+import React, { useContext } from 'react';
 import './App.css';
+import DisplayData from './components/DisplayData';
+import FirstStep from './components/FirstStep';
+import SecondStep from './components/SecondStep';
+import Steppers from './components/Steppers';
+import ThridStep from './components/ThridStep';
+import { multiStepContext } from './StepContext';
 
 function App() {
+
+  const { step } = useContext(multiStepContext);
+
+  const showStep = (step) => {
+    switch (step) {
+      case 0:
+        return <FirstStep />
+      case 1:
+        return <SecondStep />
+      case 2:
+        return <ThridStep />
+      default:
+        return <FirstStep />
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Steppers step={step} />
+        {showStep(step)}
+        <DisplayData />
       </header>
     </div>
   );
