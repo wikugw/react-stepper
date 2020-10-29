@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import { Table, TableBody, TableContainer, TableHead, TableCell, TableRow } from '@material-ui/core';
+import { Button, Table, TableBody, TableContainer, TableHead, TableCell, TableRow } from '@material-ui/core';
 import { multiStepContext } from '../StepContext';
 
 const DisplayData = () => {
 
-  const { finalData } = useContext(multiStepContext);
+  const { finalData, update } = useContext(multiStepContext);
 
   return (
     <TableContainer style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}  >
@@ -20,6 +20,7 @@ const DisplayData = () => {
             <TableCell style={{ fontWeight: 'bold' }} align="center" >Facebook</TableCell>
             <TableCell style={{ fontWeight: 'bold' }} align="center" >Twitter</TableCell>
             <TableCell style={{ fontWeight: 'bold' }} align="center" >Instagram</TableCell>
+            <TableCell style={{ fontWeight: 'bold' }} align="center" >Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -35,12 +36,15 @@ const DisplayData = () => {
                 <TableCell>{data.facebook}</TableCell>
                 <TableCell>{data.twitter}</TableCell>
                 <TableCell>{data.instagram}</TableCell>
+                <TableCell>
+                  <Button variant="contained" onClick={() => { update(data.email) }} color="primary">Edit</Button>
+                </TableCell>
               </TableRow>
             )
           })}
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer >
   )
 }
 

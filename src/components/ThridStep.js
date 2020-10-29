@@ -3,7 +3,7 @@ import { Button, TextField } from '@material-ui/core';
 import { multiStepContext } from '../StepContext';
 
 const ThridStep = () => {
-  const { changeValue, currentData, decrementStep, submitData } = useContext(multiStepContext);
+  const { currentEmail, changeValue, currentData, decrementStep, submitData } = useContext(multiStepContext);
   return (
     <div>
       <div>
@@ -17,7 +17,7 @@ const ThridStep = () => {
       </div>
       <div>
         <Button style={{ marginRight: 2 }} variant="contained" color="secondary" onClick={decrementStep}>Back</Button>
-        <Button variant="contained" onClick={submitData} color="primary">Submit</Button>
+        <Button variant="contained" onClick={submitData} color="primary">{currentEmail ? 'Update' : 'Submit'}</Button>
       </div>
     </div>
   )
