@@ -4,7 +4,7 @@ import { multiStepContext } from '../StepContext';
 
 const DisplayData = () => {
 
-  const { finalData, update } = useContext(multiStepContext);
+  const { finalData, update, destroy } = useContext(multiStepContext);
 
   return (
     <TableContainer style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}  >
@@ -38,6 +38,7 @@ const DisplayData = () => {
                 <TableCell>{data.instagram}</TableCell>
                 <TableCell>
                   <Button variant="contained" onClick={() => { update(data.email) }} color="primary">Edit</Button>
+                  <Button variant="contained" onClick={() => { destroy(data.email) }} color="secondary">Hapus</Button>
                 </TableCell>
               </TableRow>
             )

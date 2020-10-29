@@ -57,10 +57,16 @@ const StepContext = () => {
     setCurrentData(check);
   }
 
-  console.log(currentEmail);
+  const destroy = (email) => {
+    if (window.confirm('U sure want to delete this record??')) {
+      setCurrentEmail(email);
+      var check = finalData.findIndex(finalData => finalData.email === currentEmail);
+      finalData.splice(check, 1);
+    }
+  }
 
   return (
-    <multiStepContext.Provider value={{ currentEmail, update, submitData, incrementStep, decrementStep, changeValue, step, setStep, currentData, setCurrentData, finalData, setFinalData }}>
+    <multiStepContext.Provider value={{ destroy, currentEmail, update, submitData, incrementStep, decrementStep, changeValue, step, setStep, currentData, setCurrentData, finalData, setFinalData }}>
       <App />
     </multiStepContext.Provider>
   )
