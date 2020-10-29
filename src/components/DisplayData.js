@@ -5,6 +5,7 @@ import { multiStepContext } from '../StepContext';
 const DisplayData = () => {
 
   const { finalData, update, destroy } = useContext(multiStepContext);
+  console.log(finalData);
 
   return (
     <TableContainer style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}  >
@@ -17,28 +18,23 @@ const DisplayData = () => {
             <TableCell style={{ fontWeight: 'bold' }} align="center" >Email</TableCell>
             <TableCell style={{ fontWeight: 'bold' }} align="center" >Mafa</TableCell>
             <TableCell style={{ fontWeight: 'bold' }} align="center" >Mifa</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="center" >Facebook</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="center" >Twitter</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="center" >Instagram</TableCell>
             <TableCell style={{ fontWeight: 'bold' }} align="center" >Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {finalData.map(data => {
+            const bio = data.biodata;
             return (
-              <TableRow key={data.email}>
-                <TableCell>{data.name}</TableCell>
-                <TableCell>{data.status}</TableCell>
-                <TableCell>{data.no_hp}</TableCell>
-                <TableCell>{data.email}</TableCell>
-                <TableCell>{data.mafa}</TableCell>
-                <TableCell>{data.mifa}</TableCell>
-                <TableCell>{data.facebook}</TableCell>
-                <TableCell>{data.twitter}</TableCell>
-                <TableCell>{data.instagram}</TableCell>
+              <TableRow key={data.id}>
+                <TableCell>{bio.name}</TableCell>
+                <TableCell>{bio.status}</TableCell>
+                <TableCell>{bio.no_hp}</TableCell>
+                <TableCell>{bio.email}</TableCell>
+                <TableCell>{bio.mafa}</TableCell>
+                <TableCell>{bio.mifa}</TableCell>
                 <TableCell>
-                  <Button variant="contained" onClick={() => { update(data.email) }} color="primary">Edit</Button>
-                  <Button variant="contained" onClick={() => { destroy(data.email) }} color="secondary">Hapus</Button>
+                  <Button style={{ marginRight: 2 }} variant="contained" onClick={() => { update(data.id) }} color="primary">Edit</Button>
+                  <Button variant="contained" onClick={() => { destroy(data.id) }} color="secondary">Hapus</Button>
                 </TableCell>
               </TableRow>
             )
